@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Stripe Checkout Session(Javascript)</title>
+<script src="https://js.stripe.com/v3"></script>
+<!--<link href="style.css" rel="stylesheet" type="text/css" />-->
+</head>
+
+<body>
+
+    <button id="checkout">Checkout</button>
+
+    <script>
+        var stripe =Stripe(//Stripe Account Testing Publishable Key
+            "pk_test_51ONgZlK2btjRP0oVR8Lu2JNcKrMGD3Up2AaqHLiNlphBhALBSgvhD7HO7xwLgf7saHYx56RiBAIqm0g5dqdIKSrh00JIwClKhL"
+        )
+
+        document.getElementById("checkout").addEventListener("click", function(){
+            stripe.redirectToCheckout({
+                lineItems: [{
+                 price: "price_1ONgd7K2btjRP0oV1eArr2fD",
+                 quantity: 1,
+                },
+                ],
+                mode:"payment",
+                successUrl: "https://www.guillermoteniasmoron.com/",
+                cancelUrl: "https://www.example.com",
+            })
+            .then(function(result){
+                
+            });
+        })
+    </script>
+
+
+</body>
+
+</html>
